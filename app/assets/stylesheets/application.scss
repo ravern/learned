@@ -14,4 +14,14 @@
  *= require_self
  */
 
- @import "bulma";
+$notification-radius: 0;
+
+@import "bulma";
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
