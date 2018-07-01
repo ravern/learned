@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   enum role: [:student, :teacher, :admin]
 
+  validates :name, presence: true
+  validates :role, presence: true
+
   has_many :courses
   has_many :comments
 end

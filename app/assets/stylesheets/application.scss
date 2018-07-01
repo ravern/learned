@@ -18,6 +18,19 @@ $notification-radius: 0;
 
 @import "bulma";
 
+#name {
+    border: 1px solid black;
+    margin: 1rem;
+}
+
+#name:hover {
+    border-color: $link;
+}
+
+#logo {
+    margin-bottom: 0.2rem;
+}
+
 .center {
     display: flex;
     flex-direction: column;

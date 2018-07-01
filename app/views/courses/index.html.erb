@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Courses</h2>
+    <% @courses.each do |course| %>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h3 class="title is-4"><%= course.title %></h3>
+              <p><%= course.description %></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </div>
+</section>

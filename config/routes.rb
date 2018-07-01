@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  root to: 'courses#index'
 
   devise_for :users, skip: [:sessions, :registrations, :passwords], path_names: { sign_up: 'new' }
   as :user do
