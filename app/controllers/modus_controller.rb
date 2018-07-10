@@ -3,6 +3,7 @@ class ModusController < ApplicationController
     before_action :show_nav
 
     def show
-        @modu = Course.find(params[:course_id]).modus.find(params[:id])
+        @course = Course.find(params[:course_id])
+        @modu = @course.modus.find(params[:id])
     end
 end
