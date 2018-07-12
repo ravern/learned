@@ -3,10 +3,20 @@ User.create! name: "John Doe", email: "johndoe@apple.com", role: :student, passw
 User.create! name: "Jasmine Bomb", email: "jas@is.is", role: :student, password: "123456"
 
 Course.create! title: "My first course", description: "My first course is a great course for building web applications...", user: User.find(1)
-Modu.create! title: "Generating the project", content: "<script>alert('I\\'m hackerman');</script>", course: Course.find(1)
+Modu.create! title: "Generating the project", content: "
+## Download the generator
+First, you need to download the generator.
+
+## Boom boom pow!
+Hello there, this is interesting...?", course: Course.find(1)
 Comment.create! content: "Boom, this is one hell of a module.", modu: Modu.find(1), user: User.find(2)
 Comment.create! content: "Perfect composition and inheritance!", modu: Modu.find(1), user: User.find(3)
-Modu.create! title: "Building the first endpoint", content: "Create the route, the controller and the view and add it to memes.", course: Course.find(1)
+Modu.create! title: "Building the first endpoint", content: "
+## Creating stuff
+Create the route, the controller and the view and add it to memes.
+
+## Follow random tutorials
+You can follow the tutorial [here](https://google.com).", course: Course.find(1)
 Comment.create! content: "I like this very much.", modu: Modu.find(2), user: User.find(2)
 Comment.create! content: "I'm not really feeling this...", modu: Modu.find(2), user: User.find(3)
 
