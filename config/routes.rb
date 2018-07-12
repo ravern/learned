@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   as :user do
     get 'sessions/new', to: 'users/sessions#new', as: :new_user_session
     post 'sessions', to: 'users/sessions#create', as: :user_session
-    delete 'sessions', to: 'users/sessions#destroy', as: :destroy_user_session
+    get 'sessions', to: 'users/sessions#destroy', as: :destroy_user_session
 
     resource :user, controller: 'users/registrations', as: :user_registration
     get 'user/cancel', to: 'users/registrations#cancel', as: :cancel_user_registration
