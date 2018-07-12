@@ -1,20 +1,22 @@
-<section class="section">
-  <div class="container">
-    <h2 class="title is-2"><%= @course.title %></h2>
-    <h5 class="title is-5"><%= @course.description %></h5>
-    <% @modus.each do |modu| %>
-      <div class="box">
-        <a href="<%= course_modu_path(@course, modu) %>">
-          <article class="media">
-            <div class="media-content">
-              <div class="content">
-                <h3 class="title is-4"><%= modu.title %></h3>
-                <p><%= modu.content %></p>
+<div class="courses">
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2"><%= @course.title %></h2>
+      <h5 class="title is-5"><%= @course.description %></h5>
+      <% @modus.each do |modu| %>
+        <div class="box">
+          <a href="<%= course_modu_path(@course, modu) %>">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <h3 class="title is-4"><%= modu.title %></h3>
+                  <p><%= modu.content %></p>
+                </div>
               </div>
-            </div>
-          </article>
-        </a>
-      </div>
-    <% end %>
-  </div>
-</section>
+            </article>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
     resource :password, path: 'user/password', controller: 'users/passwords', as: :user_password, except: [:destroy]
 
-    resources :courses, only: [:show] do
-      resources :modus, only: [:show]
+    resources :courses, only: [:new, :create, :show] do
+      resources :modus, only: [:new, :create, :show]
     end
   end
 end

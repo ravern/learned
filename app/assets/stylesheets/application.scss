@@ -31,10 +31,56 @@ $notification-radius: 0;
     margin-bottom: 0.2rem;
 }
 
-.center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.users {
+    .form-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        width: 300px;
+    }
+}
+
+.courses {
+    .box a {
+        color: inherit;
+    }
+
+    .form-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        width: 500px;
+    }
+
+    form textarea {
+        height: 200px;
+    }
+}
+
+.modus {
+    .content-title {
+        margin-bottom: 3rem;
+    }
+
+    .form-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        width: 500px;
+    }
+
+    form textarea {
+        height: 200px;
+    }
 }
