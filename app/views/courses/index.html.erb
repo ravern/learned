@@ -1,8 +1,33 @@
 <div class="courses">
   <section class="section">
     <div class="container">
-      <h2 class="title is-2">Courses</h2>
-      <% @courses.each do |course| %>
+      <h2 class="title is-2">My Courses</h2>
+      <%- if current_user.courses.empty? %>
+        <p>This list is sad and empty</p>
+      <% end -%>
+      <% current_user.courses.each do |course| %>
+        <div class="box">
+          <a href="<%= course_path(course) %>">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <h3 class="title is-4"><%= course.title %></h3>
+                  <p><%= course.description %></p>
+                </div>
+              </div>
+            </article>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2">Enrolled Courses</h2>
+      <%- if current_user.enrolled_courses.empty? %>
+        <p>This list is sad and empty</p>
+      <% end -%>
+      <% current_user.enrolled_courses.each do |course| %>
         <div class="box">
           <a href="<%= course_path(course) %>">
             <article class="media">

@@ -25,7 +25,6 @@ class CoursesController < ApplicationController
 
     # Authentication √
     def index
-        @courses = Course.all
     end
 
     # Authentication √

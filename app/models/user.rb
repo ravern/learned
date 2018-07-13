@@ -10,5 +10,7 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   has_many :courses
+  has_many :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
   has_many :comments
 end
