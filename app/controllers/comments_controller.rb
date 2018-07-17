@@ -1,12 +1,20 @@
-class CoursesController < ApplicationController
+class CommentsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_course!
     before_action :set_modu!
 
     # Authentication √
-    # Authorization √
     def create
-        @course = Course.new
+        # Need to do it this way so @modu.comments isn't affected
+        @comment = current_user.comments.build(comment_params)
+        @comment.modu_id = @modu.id
+
+        if @comment.save
+            flash[:success] = 'Successfully posted comment!'
+            redirect_to course_modu_path(@course, @modu)
+        else
+            render 'modus/show'
+        end
     end
 
     private
