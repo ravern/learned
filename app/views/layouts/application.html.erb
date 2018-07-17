@@ -15,6 +15,9 @@
     <%- if flash[:notice] %>
       <div class="notification"><%= flash[:notice] %></div>
     <% end -%>
+    <%- if flash[:success] %>
+      <div class="notification is-success"><%= flash[:success] %></div>
+    <% end -%>
     <%- if flash[:alert] %>
       <div class="notification is-danger"><%= flash[:alert] %></div>
     <% end -%>

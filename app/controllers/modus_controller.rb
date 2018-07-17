@@ -19,7 +19,7 @@ class ModusController < ApplicationController
 
         if @modu.save
             flash[:success] = 'Successfully created module!'
-            redirect_to course_path(@course)
+            redirect_to course_modus_path(@course)
         else
             render 'modus/new'
         end
@@ -31,9 +31,31 @@ class ModusController < ApplicationController
     end
 
     # Authentication √
+    def complete
+        @modu = @course.modus.find(params[:modu_id])
+
+        if current_user.complete?(@modu)
+            flash[:success] = 'Successfully completed module!'
+            redirect_to course_modus_path(@course)
+            return
+        end
+
+        @completion = Completion.new(modu: @modu, user: current_user)
+
+        if @completion.save
+            flash[:success] = 'Successfully completed module!'
+            redirect_to course_modus_path(@course)
+        else
+            @comment = Comment.new
+            render 'modus/show'
+        end
+    end
+
+    # Authentication √
     def show
         @modu = @course.modus.find(params[:id])
         @comment = current_user.comments.build
+        @completion = Completion.new
     end
 
     protected

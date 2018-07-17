@@ -14,6 +14,7 @@
  *= require_self
  */
 
+$primary: #222;
 $notification-radius: 0;
 
 @import "bulma";
@@ -27,6 +28,10 @@ $notification-radius: 0;
     margin-bottom: 0.2rem;
 }
 
+.notification {
+    margin-bottom: 0rem !important;
+}
+
 .users {
     .form-center {
         display: flex;
@@ -37,6 +42,10 @@ $notification-radius: 0;
 
     .full-height {
         height: 100vh;
+    }
+
+    h2 {
+        margin-top: 2rem;
     }
 
     form {
@@ -69,6 +78,15 @@ $notification-radius: 0;
 }
 
 .modus {
+    .box.completed {
+        background-color: $success;
+        color: $white;
+
+        .title {
+            color: $white;
+        }
+    }
+
     .box a {
         color: inherit;
     }

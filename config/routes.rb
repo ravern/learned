@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :courses, only: [:new, :create] do
     resources :modus, only: [:new, :create, :index, :show] do
+      post "complete", to: 'modus#complete'
+
       resource :comments, only: [:create]
     end
   end

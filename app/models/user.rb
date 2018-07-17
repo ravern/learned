@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def all_courses
     enrolled_courses.union(courses)
   end
+
+  def complete?(modu)
+    return Completion.where(modu: modu, user: self).size > 0
+  end
 end
