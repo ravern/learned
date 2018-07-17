@@ -1,14 +1,16 @@
 class Ability
   include CanCan::Ability
 
+  # Reading is controlled by database structure and not by CanCan.
   def initialize(user)
     if user.admin?
-      can :manage, :all
+      can [:delete], Course
+      can [:delete], Modu
     end
 
     if user.teacher?
-      can [:create], Course
-      can [:create], Modu
+      can [:create, :update, :delete], Course
+      can [:create, :update, :delete], Modu
     end
 
     if user.student?

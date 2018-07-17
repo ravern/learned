@@ -5,20 +5,11 @@ class ApplicationController < ActionController::Base
 
     protected
     def show_nav?
-        if current_user
-            return true
-        end
-        return false
+        return current_user
     end
 
     def show_create?
-        unless current_user
-            return false
-        end
-        if current_user.student?
-            return false
-        end
-        return true
+        return false
     end
 
     def create_path

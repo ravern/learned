@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_014727) do
+ActiveRecord::Schema.define(version: 2018_07_17_074426) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_014727) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "public", default: false
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 

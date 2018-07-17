@@ -4,15 +4,17 @@ class CoursesController < ApplicationController
     # Authentication √
     # Authorization √
     def new
+        authorize! :create, Course
+
         @course = Course.new
-        authorize! :create, @course
     end
 
     # Authentication √
     # Authorization √
     def create
+        authorize! :create, Course
+
         @course = current_user.courses.build(course_params)
-        authorize! :create, @course
 
         if @course.save
             flash[:success] = 'Successfully created course!'
@@ -23,13 +25,20 @@ class CoursesController < ApplicationController
     end
 
     # Authentication √
-    def index
-    end
-
-    # Authentication √
     def show
         @course = Course.find(params[:id])
-        @modus = @course.modus
+    end
+
+    protected
+    def show_create?
+        if action_name == "index"
+            return can? :create, Course
+        end
+        return false
+    end
+
+    def create_path
+        new_course_path
     end
 
     private

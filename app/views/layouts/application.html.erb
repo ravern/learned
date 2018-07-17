@@ -18,12 +18,12 @@
     <%- if flash[:alert] %>
       <div class="notification is-danger"><%= flash[:alert] %></div>
     <% end -%>
-    <div class="container">
-      <%- if show_nav? %>
-        <nav class="navbar is-transparent">
+    <%- if show_nav? %>
+      <nav class="navbar is-primary">
+        <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="<%= root_path %>">
-              <h3 id="logo" class="title is-3 has-text-danger">Learned</h3>
+              <h3 id="logo" class="title is-3 has-text-white">Learned</h3>
             </a>
             <div class="navbar-burger burger" data-target="nav">
               <span></span>
@@ -42,8 +42,8 @@
             </div>
           </div>
         </nav>
-      <% end -%>
-    </div>
+      </div>
+    <% end -%>
     <%= yield %>
   </body>
 </html>

@@ -7,7 +7,7 @@
       <% end -%>
       <% current_user.courses.each do |course| %>
         <div class="box">
-          <a href="<%= course_path(course) %>">
+          <a href="<%= course_modus_path(course) %>">
             <article class="media">
               <div class="media-content">
                 <div class="content">
@@ -29,7 +29,7 @@
       <% end -%>
       <% current_user.enrolled_courses.each do |course| %>
         <div class="box">
-          <a href="<%= course_path(course) %>">
+          <a href="<%= course_modus_path(course) %>">
             <article class="media">
               <div class="media-content">
                 <div class="content">

@@ -5,15 +5,17 @@ class ModusController < ApplicationController
     # Authentication √
     # Authorization √
     def new
+        authorize! :create, Modu
+
         @modu = Modu.new
-        authorize! :create, @modu
     end
 
     # Authentication √
     # Authorization √
     def create
+        authorize! :create, Modu
+
         @modu = @course.modus.build(modu_params)
-        authorize! :create, @modu
 
         if @modu.save
             flash[:success] = 'Successfully created module!'
@@ -23,15 +25,33 @@ class ModusController < ApplicationController
         end
     end
 
+    # Authentication √
+    def index
+        @modus = @course.modus
+    end
+
+    # Authentication √
     def show
         @modu = @course.modus.find(params[:id])
     end
 
+    protected
+    def show_create?
+        if action_name == "index"
+            return can? :create, Modu
+        end
+        return false
+    end
+
+    def create_path
+        new_course_modu_path(@course)
+    end
+
+    private
     def set_course!
         @course = Course.find(params[:course_id])
     end
 
-    private
     def modu_params
         modu_params = params.require(:modu).permit(:title, :content)
     end

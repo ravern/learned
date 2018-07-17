@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'modus/index'
   root to: 'courses#index'
 
   devise_for :users, skip: [:sessions, :registrations, :passwords], path_names: { sign_up: 'new' }
@@ -12,9 +11,9 @@ Rails.application.routes.draw do
     get 'user/cancel', to: 'users/registrations#cancel', as: :cancel_user_registration
 
     resource :password, path: 'user/password', controller: 'users/passwords', as: :user_password, except: [:destroy]
+  end
 
-    resources :courses, only: [:new, :create, :show] do
-      resources :modus, only: [:new, :create, :show]
-    end
+  resources :courses, only: [:new, :create] do
+    resources :modus, only: [:new, :create, :index, :show]
   end
 end
