@@ -19,7 +19,20 @@ class User < ApplicationRecord
     enrolled_courses.union(courses)
   end
 
-  def complete?(modu)
-    return Completion.where(modu: modu, user: self).size > 0
+  def complete?(course_or_modu)
+    if course_or_modu.is_a? Modu
+      return Completion.where(modu: course_or_modu, user: self).size > 0
+    end
+
+    if course_or_modu.modus.empty?
+      return false
+    end
+
+    course_or_modu.modus.each do |modu|
+      unless complete? modu
+        return false
+      end
+    end
+    return true
   end
 end

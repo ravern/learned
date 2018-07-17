@@ -6,7 +6,11 @@
         <p>This list is sad and empty</p>
       <% end -%>
       <% current_user.courses.each do |course| %>
-        <div class="box">
+        <%- if current_user.complete? course %>
+          <div class="box completed">
+        <% else %>
+          <div class="box">
+        <% end -%>
           <a href="<%= course_modus_path(course) %>">
             <article class="media">
               <div class="media-content">
@@ -28,7 +32,11 @@
         <p>This list is sad and empty</p>
       <% end -%>
       <% current_user.enrolled_courses.each do |course| %>
-        <div class="box">
+        <%- if current_user.complete? course %>
+          <div class="box completed">
+        <% else %>
+          <div class="box">
+        <% end -%>
           <a href="<%= course_modus_path(course) %>">
             <article class="media">
               <div class="media-content">

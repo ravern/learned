@@ -5,13 +5,15 @@
       <div class="content">
         <%= markdown(@modu.content) %>
       </div>
-      <%= form_for(@completion, url: course_modu_complete_path(@course, @modu)) do |f| %>
-        <div class="field">
-          <div class="control">
-            <%= f.submit "Complete", class: "button is-success" %>
+      <%- if @course.student? current_user %>
+        <%= form_for(@completion, url: course_modu_complete_path(@course, @modu)) do |f| %>
+          <div class="field">
+            <div class="control">
+              <%= f.submit "Complete", class: "button is-success" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      <% end -%>
     </div>
   </section>
   <hr />

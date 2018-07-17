@@ -3,6 +3,7 @@
     <div class="container">
       <h2 class="title is-2"><%= @course.title %></h2>
       <h5 class="title is-5"><%= @course.description %></h5>
+      <h5 class="title is-5"><%= @course.completion_count %> out of <%= @course.students.size %> students completed.</h5>
       <% @modus.each do |modu| %>
         <%- if current_user.complete? modu %>
           <div class="box completed">

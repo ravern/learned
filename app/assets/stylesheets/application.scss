@@ -32,6 +32,15 @@ $notification-radius: 0;
     margin-bottom: 0rem !important;
 }
 
+.box.completed {
+    background-color: $success;
+    color: $white;
+
+    .title {
+        color: $white;
+    }
+}
+
 .users {
     .form-center {
         display: flex;
@@ -78,15 +87,6 @@ $notification-radius: 0;
 }
 
 .modus {
-    .box.completed {
-        background-color: $success;
-        color: $white;
-
-        .title {
-            color: $white;
-        }
-    }
-
     .box a {
         color: inherit;
     }
