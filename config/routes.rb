@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: [:new, :create] do
-    resources :modus, only: [:new, :create, :index, :show]
+    resources :modus, only: [:new, :create, :index, :show] do
+      resource :comments, only: [:create]
+    end
   end
 end

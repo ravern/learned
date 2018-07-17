@@ -13,4 +13,9 @@ class User < ApplicationRecord
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments, source: :course
   has_many :comments
+  has_many :completions
+
+  def all_courses
+    enrolled_courses.union(courses)
+  end
 end

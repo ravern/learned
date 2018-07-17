@@ -33,6 +33,7 @@ class ModusController < ApplicationController
     # Authentication √
     def show
         @modu = @course.modus.find(params[:id])
+        @comment = current_user.comments.build
     end
 
     protected
@@ -49,7 +50,7 @@ class ModusController < ApplicationController
 
     private
     def set_course!
-        @course = Course.find(params[:course_id])
+        @course = current_user.all_courses.find(params[:course_id])
     end
 
     def modu_params

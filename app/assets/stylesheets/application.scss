@@ -77,6 +77,18 @@ $notification-radius: 0;
         margin-bottom: 3rem;
     }
 
+    .comment {
+        margin-bottom: 1rem;
+
+        h5 {
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-top: 0rem;
+        }
+    }
+
     .form-center {
         display: flex;
         flex-direction: column;
@@ -91,7 +103,15 @@ $notification-radius: 0;
         width: 500px;
     }
 
-    form textarea {
+    .markdown-area {
         height: 200px;
+    }
+
+    .new_comment {
+        margin-bottom: 1.5rem;
+    }
+
+    .comment-area {
+        height: 80px;
     }
 }

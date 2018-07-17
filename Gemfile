@@ -32,6 +32,8 @@ gem 'redcarpet', '~> 3.0.0'
 
 gem "cancan"
 
+gem 'active_record_union'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
