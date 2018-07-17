@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
     before_action :authenticate_user!
-    before_action :show_nav
 
     # Authentication √
     # Authorization √

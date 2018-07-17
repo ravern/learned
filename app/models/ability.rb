@@ -7,9 +7,11 @@ class Ability
     end
 
     if user.teacher?
-      can :show, :create
       can [:create], Course
       can [:create], Modu
+    end
+
+    if user.student?
     end
   end
 end

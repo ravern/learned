@@ -17,7 +17,7 @@
       <div class="notification is-danger"><%= flash[:alert] %></div>
     <% end -%>
     <div class="container">
-      <%- if @nav %>
+      <%- if show_nav? %>
         <nav class="navbar is-transparent">
           <div class="navbar-brand">
             <a class="navbar-item" href="<%= root_path %>">
@@ -31,16 +31,8 @@
           </div>
           <div id="nav" class="navbar-menu">
             <div class="navbar-start">
-              <%- if can? :show, :create %>
-                <%- if @course %>
-                  <%- if @course.new_record? %>
-                    <a class="navbar-item" href="<%= new_course_path %>">Create</a>
-                  <% else %>
-                    <a class="navbar-item" href="<%= new_course_modu_path(@course) %>">Create</a>
-                  <% end -%>
-                <% else %>
-                  <a class="navbar-item" href="<%= new_course_path %>">Create</a>
-                <% end -%>
+              <%- if show_create? %>
+                <a class="navbar-item" href="<%= create_path %>">Create</a>
               <% end -%>
             </div>
             <div class="navbar-end">

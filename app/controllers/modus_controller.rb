@@ -1,6 +1,5 @@
 class ModusController < ApplicationController
     before_action :authenticate_user!
-    before_action :show_nav
     before_action :set_course!
 
     # Authentication √
