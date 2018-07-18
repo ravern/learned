@@ -19,4 +19,8 @@ module ApplicationHelper
     
         markdown.render(text).html_safe
     end
+
+    def preview(text)
+      text.first(400)
+    end
 end

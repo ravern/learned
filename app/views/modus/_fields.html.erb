@@ -1,6 +1,6 @@
 <% if @modu.errors.any? %>
 <div class="box">
-    <p><%= pluralize(@modu.errors.count, "error") %> prohibited this course from being saved:</p>
+    <p><%= pluralize(@modu.errors.count, "error") %> prohibited this module from being saved:</p>
     <ul>
     <% @modu.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>

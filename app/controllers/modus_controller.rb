@@ -21,6 +21,7 @@ class ModusController < ApplicationController
             flash[:success] = 'Successfully created module!'
             redirect_to course_modus_path(@course)
         else
+            flash[:alert] = 'Failed to create module :('
             render 'modus/new'
         end
     end
@@ -82,6 +83,7 @@ class ModusController < ApplicationController
             flash[:success] = 'Successfully updated module!'
             redirect_to course_modus_path(@course)
         else
+            flash[:alert] = 'Failed to save module :('
             render 'modus/new'
         end
     end

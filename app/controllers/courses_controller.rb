@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
             flash[:success] = 'Successfully created course!'
             redirect_to root_path
         else
+            flash[:alert] = 'Failed to create course :('
             render 'courses/new'
         end
     end
@@ -53,6 +54,7 @@ class CoursesController < ApplicationController
             flash[:success] = 'Successfully updated course!'
             redirect_to root_path
         else
+            flash[:alert] = 'Failed to save course :('
             render 'courses/new'
         end
     end

@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
             flash[:success] = 'Successfully posted comment!'
             redirect_to course_modu_path(@course, @modu)
         else
+            flash[:alert] = 'Failed to post comment :('
             render 'modus/show'
         end
     end
