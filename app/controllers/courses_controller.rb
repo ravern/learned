@@ -29,6 +29,13 @@ class CoursesController < ApplicationController
         @course = Course.find(params[:id])
     end
 
+    # Authentication √
+    def destroy
+        @course = Course.find(params[:id])
+        @course.destroy
+        redirect_to root_path
+    end
+
     protected
     def show_create?
         if action_name == "index"

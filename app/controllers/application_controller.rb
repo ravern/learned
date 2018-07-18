@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     helper_method :show_nav?
     helper_method :show_create?
+    helper_method :show_edit?
+    helper_method :show_delete?
     helper_method :create_path
 
     protected
@@ -9,6 +11,14 @@ class ApplicationController < ActionController::Base
     end
 
     def show_create?
+        return false
+    end
+
+    def show_edit?
+        return false
+    end
+
+    def show_delete?
         return false
     end
 

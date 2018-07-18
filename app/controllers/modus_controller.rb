@@ -58,10 +58,35 @@ class ModusController < ApplicationController
         @completion = Completion.new
     end
 
+    # Authentication √
+    def destroy
+        @modu = @course.modus.find(params[:id])
+        @modu.destroy
+        redirect_to course_modus_path(@course)
+    end
+
     protected
     def show_create?
         if action_name == "index"
             return can? :create, Modu
+        end
+        return false
+    end
+
+    def show_edit?
+        if action_name == "index"
+            return can? :update, @course
+        elsif action_name == "show"
+            return can? :update, @modu
+        end
+        return false
+    end
+
+    def show_delete?
+        if action_name == "index"
+            return can? :delete, @course
+        elsif action_name == "show"
+            return can? :delete, @modu
         end
         return false
     end
