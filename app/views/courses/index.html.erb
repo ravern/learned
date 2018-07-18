@@ -1,30 +1,32 @@
 <div class="courses">
-  <section class="section">
-    <div class="container">
-      <h2 class="title is-2">My Courses</h2>
-      <%- if current_user.courses.empty? %>
-        <p>This list is sad and empty</p>
-      <% end -%>
-      <% current_user.courses.each do |course| %>
-        <%- if current_user.complete? course %>
-          <div class="box completed">
-        <% else %>
-          <div class="box">
+  <%- if show_create? %>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-2">My Courses</h2>
+        <%- if current_user.courses.empty? %>
+          <p>This list is sad and empty</p>
         <% end -%>
-          <a href="<%= course_modus_path(course) %>">
-            <article class="media">
-              <div class="media-content">
-                <div class="content">
-                  <h3 class="title is-4"><%= course.title %></h3>
-                  <p><%= course.description %></p>
+        <% current_user.courses.each do |course| %>
+          <%- if current_user.complete? course %>
+            <div class="box completed">
+          <% else %>
+            <div class="box">
+          <% end -%>
+            <a href="<%= course_modus_path(course) %>">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <h3 class="title is-4"><%= course.title %></h3>
+                    <p><%= course.description %></p>
+                  </div>
                 </div>
-              </div>
-            </article>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  </section>
+              </article>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end -%>
   <section class="section">
     <div class="container">
       <h2 class="title is-2">Enrolled Courses</h2>
