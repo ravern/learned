@@ -36,6 +36,27 @@ class CoursesController < ApplicationController
         redirect_to root_path
     end
 
+    # Authentication √
+    def edit
+        @course = Course.find(params[:id])
+    end
+
+    # Authentication √
+    def update
+        @course = current_user.courses.find(params[:id])
+
+        authorize! :update, @course
+
+        @course.update(course_params)
+
+        if @course.save
+            flash[:success] = 'Successfully updated course!'
+            redirect_to root_path
+        else
+            render 'courses/new'
+        end
+    end
+
     protected
     def show_create?
         if action_name == "index"

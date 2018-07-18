@@ -65,6 +65,27 @@ class ModusController < ApplicationController
         redirect_to course_modus_path(@course)
     end
 
+    # Authentication √
+    def edit
+        @modu = @course.modus.find(params[:id])
+    end
+
+    # Authentication √
+    def update
+        @modu = @course.modus.find(params[:id])
+
+        authorize! :update, @modu
+
+        @modu.update(modu_params)
+
+        if @modu.save
+            flash[:success] = 'Successfully updated module!'
+            redirect_to course_modus_path(@course)
+        else
+            render 'modus/new'
+        end
+    end
+
     protected
     def show_create?
         if action_name == "index"

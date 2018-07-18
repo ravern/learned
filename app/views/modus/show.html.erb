@@ -4,7 +4,7 @@
       <h2 class="content-title title is-2"><%= @modu.title %></h2>
       <div class="change">
         <%- if show_edit? %>
-          <a href="<%= "#" %>" class="button is-warning">Edit</a>
+          <a href="<%= edit_course_modu_path(@course, @modu) %>" class="button is-warning">Edit</a>
         <% end -%>
         <%- if show_delete? %>
           <%= form_for(@modu, url: course_modu_path(@course, @modu), method: :delete, html: { onsubmit: "return confirmDelete('edit_modu_8')" }) do |f| %>

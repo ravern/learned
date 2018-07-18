@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     resource :password, path: 'user/password', controller: 'users/passwords', as: :user_password, except: [:destroy]
   end
 
-  resources :courses, only: [:new, :create, :destroy] do
-    resources :modus, only: [:new, :create, :index, :show, :destroy] do
+  resources :courses, only: [:new, :create, :edit, :update, :destroy] do
+    resources :modus do
       post "complete", to: 'modus#complete'
 
       resource :comments, only: [:create]

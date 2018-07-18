@@ -1,0 +1,9 @@
+<div class="modus">
+  <div class="container form-center">
+    <h2 class="title is-2">Edit Module</h2>
+
+    <%= form_for(@modu, url: course_modu_path(@course, @modu), method: :put) do |f| %>
+      <%= render "fields.html", f: f, submit: "Save" %>
+    <% end %>
+  </div>
+</div>

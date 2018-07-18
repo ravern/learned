@@ -1,0 +1,9 @@
+<div class="courses">
+  <div class="container form-center">
+    <h2 class="title is-2">Edit Course</h2>
+
+    <%= form_for(@course, url: course_path(@course), method: :put) do |f| %>
+      <%= render "fields.html", f: f, submit: "Save" %>
+    <% end %>
+  </div>
+</div>

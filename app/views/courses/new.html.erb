@@ -3,36 +3,7 @@
     <h2 class="title is-2">Create Course</h2>
 
     <%= form_for(@course, url: courses_path) do |f| %>
-      <% if @course.errors.any? %>
-        <div class="box">
-          <p><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</p>
-          <ul>
-          <% @course.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :title, class: "label" %>
-        <div class="control">
-          <%= f.text_field :title, autofocus: true, class: "input" %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :description, class: "label" %>
-        <div class="control">
-          <%= f.text_area :description, class: "input" %>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="control">
-          <%= f.submit "Create", class: "button is-primary" %>
-        </div>
-      </div>
+      <%= render "fields.html", f: f, submit: "Create" %>
     <% end %>
   </div>
 </div>
