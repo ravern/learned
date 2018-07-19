@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
             redirect_to root_path
         else
             flash[:alert] = 'Failed to save course :('
-            render 'courses/new'
+            render 'courses/edit'
         end
     end
 
@@ -73,6 +73,6 @@ class CoursesController < ApplicationController
 
     private
     def course_params
-        params.require(:course).permit(:title, :description)
+        params.require(:course).permit(:title, :description, :student_emails)
     end
 end
