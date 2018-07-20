@@ -1,12 +1,12 @@
 <div class="courses">
-  <%- if show_create? %>
+  <%- if show_create? || @courses.size > 0 %>
     <section class="section">
       <div class="container">
         <h2 class="title is-2">My Courses</h2>
-        <%- if current_user.courses.empty? %>
+        <%- if @courses.empty? %>
           <p>This list is sad and empty</p>
         <% end -%>
-        <% current_user.courses.each do |course| %>
+        <% @courses.each do |course| %>
           <%- if current_user.complete? course %>
             <div class="box completed">
           <% else %>

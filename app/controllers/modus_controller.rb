@@ -120,7 +120,11 @@ class ModusController < ApplicationController
 
     private
     def set_course!
-        @course = current_user.all_courses.find(params[:course_id])
+        if current_user.admin?
+            @course = Course.find(params[:course_id])
+        else
+            @course = current_user.all_courses.find(params[:course_id])
+        end
     end
 
     def modu_params

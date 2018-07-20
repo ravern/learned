@@ -28,25 +28,25 @@ class CoursesController < ApplicationController
     end
 
     # Authentication √
-    def show
-        @course = Course.find(params[:id])
+    def index
+        @courses = courses
     end
 
     # Authentication √
     def destroy
-        @course = Course.find(params[:id])
+        @course = courses.find(params[:id])
         @course.destroy
         redirect_to root_path
     end
 
     # Authentication √
     def edit
-        @course = Course.find(params[:id])
+        @course = courses.find(params[:id])
     end
 
     # Authentication √
     def update
-        @course = current_user.courses.find(params[:id])
+        @course = courses.find(params[:id])
 
         authorize! :update, @course
 
@@ -74,6 +74,14 @@ class CoursesController < ApplicationController
     end
 
     private
+    def courses
+        if current_user.admin?
+            return Course.all
+        else
+            return current_user.courses
+        end
+    end
+
     def course_params
         params.require(:course).permit(:title, :description, :student_emails)
     end
