@@ -14,7 +14,9 @@ class CoursesController < ApplicationController
     def create
         authorize! :create, Course
 
-        @course = current_user.courses.build(course_params)
+        # So that the `user` attribute exists before adding in `student_emails`
+        @course = current_user.courses.build
+        @course.update(course_params)
 
         if @course.save
             flash[:success] = 'Successfully created course!'

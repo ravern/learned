@@ -27,7 +27,7 @@ class Course < ApplicationRecord
         @student_emails_invalid = true
         return
       end
-      if student == user.email
+      if email == user.email
         @student_emails_invalid = true
         return
       end
