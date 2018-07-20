@@ -9,11 +9,11 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :role, presence: true
 
-  has_many :courses
-  has_many :enrollments
+  has_many :courses, dependent: :delete_all
+  has_many :enrollments, dependent: :delete_all
   has_many :enrolled_courses, through: :enrollments, source: :course
-  has_many :comments
-  has_many :completions
+  has_many :comments, dependent: :delete_all
+  has_many :completions, dependent: :delete_all
 
   def all_courses
     enrolled_courses.union(courses)

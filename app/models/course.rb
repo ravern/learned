@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   belongs_to :user
-  has_many :modus
-  has_many :enrollments
+  has_many :modus, dependent: :delete_all
+  has_many :enrollments, dependent: :delete_all
   has_many :students, through: :enrollments, source: :user
 
   validates :title, presence: true
