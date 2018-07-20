@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
         # Need to do it this way so @modu.comments isn't affected
         @comment = current_user.comments.build(comment_params)
         @comment.modu_id = @modu.id
+        @completion = Completion.new
 
         if @comment.save
             flash[:success] = 'Successfully posted comment!'

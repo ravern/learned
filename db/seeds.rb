@@ -1,6 +1,7 @@
 User.create! name: "Benjamin Tan", email: "me@benjam.in", role: :teacher, password: "123456"
 User.create! name: "John Doe", email: "johndoe@apple.com", role: :student, password: "123456"
 User.create! name: "Jasmine Bomb", email: "jas@is.is", role: :student, password: "123456"
+User.create! name: "Admin", email: "admin@gmail.com", role: :admin, password: "123456"
 
 
 
