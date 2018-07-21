@@ -34,6 +34,8 @@ gem "cancan"
 
 gem 'active_record_union'
 
+gem 'rack-attack'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
