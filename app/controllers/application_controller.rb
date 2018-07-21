@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+    rescue_from CanCan::AccessDenied do |exception|
+        redirect_to root_path, :alert => "Unauthorized access!"
+    end
+
     helper_method :show_nav?
     helper_method :show_create?
     helper_method :show_edit?

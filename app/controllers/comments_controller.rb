@@ -4,10 +4,14 @@ class CommentsController < ApplicationController
     before_action :set_modu!
 
     # Authentication √
+    # Authorization √
     def create
         # Need to do it this way so @modu.comments isn't affected
         @comment = current_user.comments.build(comment_params)
         @comment.modu_id = @modu.id
+
+        authorize! :create, @comment
+
         @completion = Completion.new
 
         if @comment.save

@@ -4,19 +4,19 @@ class CoursesController < ApplicationController
     # Authentication √
     # Authorization √
     def new
-        authorize! :create, Course
-
         @course = Course.new
+
+        authorize! :create, @course
     end
 
     # Authentication √
     # Authorization √
     def create
-        authorize! :create, Course
-
         # So that the `user` attribute exists before adding in `student_emails`
         @course = current_user.courses.build
         @course.update(course_params)
+
+        authorize! :create, @course
 
         if @course.save
             flash[:success] = 'Successfully created course!'
@@ -28,23 +28,32 @@ class CoursesController < ApplicationController
     end
 
     # Authentication √
+    # Authorization √
     def index
         @courses = courses
     end
 
     # Authentication √
+    # Authorization √
     def destroy
         @course = courses.find(params[:id])
+
+        authorize! :delete, @course
+
         @course.destroy
         redirect_to root_path
     end
 
     # Authentication √
+    # Authorization √
     def edit
         @course = courses.find(params[:id])
+
+        authorize! :update, @course
     end
 
     # Authentication √
+    # Authorization √
     def update
         @course = courses.find(params[:id])
 

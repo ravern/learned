@@ -4,16 +4,29 @@ class Ability
   # Reading is controlled by database structure and not by CanCan.
   def initialize(user)
     if user.admin?
-      can [:delete], Course
-      can [:delete], Modu
+      can :delete, Course
+      can :delete, Modu
     end
 
     if user.teacher?
-      can [:create, :update, :delete], Course
-      can [:create, :update, :delete], Modu
+      can :create, Course
+      can [:update, :delete], Course do |course|
+        user.courses.include?(course)
+      end
+
+      can [:create, :update, :delete], Modu do |modu|
+        user.courses.include?(modu.course)
+      end
     end
 
-    if user.student?
+    if user.teacher? || user.student?
+      can :create, Comment do |comment|
+        user.all_courses.include?(comment.modu.course)
+      end
+
+      can :complete, Modu do |modu|
+        user.courses.include?(modu.course)
+      end
     end
   end
 end

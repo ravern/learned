@@ -5,17 +5,17 @@ class ModusController < ApplicationController
     # Authentication √
     # Authorization √
     def new
-        authorize! :create, Modu
+        @modu = @course.modus.build
 
-        @modu = Modu.new
+        authorize! :create, @modu
     end
 
     # Authentication √
     # Authorization √
     def create
-        authorize! :create, Modu
-
         @modu = @course.modus.build(modu_params)
+
+        authorize! :create, @modu
 
         if @modu.save
             flash[:success] = 'Successfully created module!'
@@ -27,13 +27,17 @@ class ModusController < ApplicationController
     end
 
     # Authentication √
+    # Authorization √
     def index
         @modus = @course.modus
     end
 
     # Authentication √
+    # Authorization √
     def complete
         @modu = @course.modus.find(params[:modu_id])
+
+        authorize! :complete, @modu
 
         if current_user.complete?(@modu)
             flash[:success] = 'Successfully completed module!'
@@ -53,6 +57,7 @@ class ModusController < ApplicationController
     end
 
     # Authentication √
+    # Authorization √
     def show
         @modu = @course.modus.find(params[:id])
         @comment = current_user.comments.build
@@ -60,18 +65,26 @@ class ModusController < ApplicationController
     end
 
     # Authentication √
+    # Authorization √
     def destroy
         @modu = @course.modus.find(params[:id])
+
+        authorize! :delete, @modu
+
         @modu.destroy
         redirect_to course_modus_path(@course)
     end
 
     # Authentication √
+    # Authorization √
     def edit
         @modu = @course.modus.find(params[:id])
+
+        authorize! :update, @modu
     end
 
     # Authentication √
+    # Authorization √
     def update
         @modu = @course.modus.find(params[:id])
 
@@ -91,7 +104,7 @@ class ModusController < ApplicationController
     protected
     def show_create?
         if action_name == "index"
-            return can? :create, Modu
+            return can? :create, @modu
         end
         return false
     end
