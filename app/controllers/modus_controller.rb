@@ -9,7 +9,8 @@ class ModusController < ApplicationController
     def new
         @modu = @course.modus.build
 
-        authorize! :create, @modu
+        authorize! :create, Modu
+        authorize! :update, @course
     end
 
     # Authentication √
@@ -17,7 +18,8 @@ class ModusController < ApplicationController
     def create
         @modu = @course.modus.build(modu_params)
 
-        authorize! :create, @modu
+        authorize! :create, Modu
+        authorize! :update, @course
 
         if @modu.save
             flash[:success] = 'Successfully created module!'
@@ -107,7 +109,7 @@ class ModusController < ApplicationController
     protected
     def show_create?
         if action_name == "index"
-            return can? :create, Modu
+            return can?(:create, Modu) && can?(:update, @course)
         end
         return false
     end

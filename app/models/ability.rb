@@ -18,6 +18,10 @@ class Ability
       can [:update, :delete], Modu do |modu|
         user.courses.include?(modu.course)
       end
+
+      can :complete, Modu do |modu|
+        user.enrolled_courses.include?(modu.course)
+      end
     end
 
     if user.teacher? || user.student?
@@ -26,7 +30,7 @@ class Ability
       end
 
       can :complete, Modu do |modu|
-        user.courses.include?(modu.course)
+        user.enrolled_courses.include?(modu.course)
       end
     end
   end

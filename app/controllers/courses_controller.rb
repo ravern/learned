@@ -71,6 +71,7 @@ class CoursesController < ApplicationController
     end
 
     # Authentication √
+    # Authorization √
     def enroll
         course = current_user.discover_courses.find(params[:course_id])
         enrollment = current_user.enrollments.build(course: course)
