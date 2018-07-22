@@ -19,6 +19,10 @@ class User < ApplicationRecord
     enrolled_courses.union(courses)
   end
 
+  def discover_courses
+    Course.where(public: true).where.not(id: all_courses.map(&:id))
+  end
+
   def complete?(course_or_modu)
     if course_or_modu.is_a? Modu
       return Completion.where(modu: course_or_modu, user: self).size > 0

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: [:new, :create, :edit, :update, :destroy] do
+    post "enroll", to: 'courses#enroll'
+
     resources :modus do
       post "complete", to: 'modus#complete'
 

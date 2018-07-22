@@ -17,24 +17,35 @@
             </div>
           <% end %>
         <% end -%>
-      </div>
-      <% @modus.each do |modu| %>
-        <%- if current_user.complete? modu %>
-          <div class="box completed">
-        <% else %>
-          <div class="box">
-        <% end -%>
-          <a href="<%= course_modu_path(@course, modu) %>">
-            <article class="media">
-              <div class="media-content">
-                <div class="content">
-                  <h3 class="title is-4"><%= modu.title %></h3>
-                  <p><%= preview(modu.content) %></p>
-                </div>
+        <%- unless show_modules? %>
+          <%= form_for(@enrollment, url: course_enroll_path(@course)) do |f| %>
+            <div class="field">
+              <div class="control">
+                <%= f.submit "Enroll", class: "button is-primary" %>
               </div>
-            </article>
-          </a>
-        </div>
+            </div>
+          <% end %>
+        <% end -%>
+      </div>
+      <%- if show_modules? %>
+        <% @modus.each do |modu| %>
+          <%- if current_user.complete? modu %>
+            <div class="box completed">
+          <% else %>
+            <div class="box">
+          <% end -%>
+            <a href="<%= course_modu_path(@course, modu) %>">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <h3 class="title is-4"><%= modu.title %></h3>
+                    <p><%= preview(modu.content) %></p>
+                  </div>
+                </div>
+              </article>
+            </a>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </section>

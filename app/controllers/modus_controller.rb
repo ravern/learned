@@ -2,6 +2,8 @@ class ModusController < ApplicationController
     before_action :authenticate_user!
     before_action :set_course!
 
+    helper_method :show_modules?
+
     # Authentication √
     # Authorization √
     def new
@@ -30,6 +32,7 @@ class ModusController < ApplicationController
     # Authorization √
     def index
         @modus = @course.modus
+        @enrollment = Enrollment.new
     end
 
     # Authentication √
@@ -136,8 +139,17 @@ class ModusController < ApplicationController
         if current_user.admin?
             @course = Course.find(params[:course_id])
         else
-            @course = current_user.all_courses.find(params[:course_id])
+            courses = current_user.all_courses
+            if action_name == "index"
+                courses = courses.union(current_user.discover_courses)
+            end
+
+            @course = courses.find(params[:course_id])
         end
+    end
+
+    def show_modules?
+        Enrollment.find_by(course: @course, user: current_user)
     end
 
     def modu_params

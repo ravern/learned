@@ -7,11 +7,7 @@
           <p>This list is sad and empty</p>
         <% end -%>
         <% @courses.each do |course| %>
-          <%- if current_user.complete? course %>
-            <div class="box completed">
-          <% else %>
-            <div class="box">
-          <% end -%>
+          <div class="box">
             <a href="<%= course_modus_path(course) %>">
               <article class="media">
                 <div class="media-content">
@@ -53,4 +49,28 @@
       <% end %>
     </div>
   </section>
+  <%- unless current_user.admin? %>
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-2">Discover Courses</h2>
+        <%- if current_user.discover_courses.empty? %>
+          <p>This list is sad and empty</p>
+        <% end -%>
+        <% current_user.discover_courses.each do |course| %>
+          <div class="box">
+            <a href="<%= course_modus_path(course) %>">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <h3 class="title is-4"><%= course.title %></h3>
+                    <p><%= course.description %></p>
+                  </div>
+                </div>
+              </article>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end -%>
 </div>

@@ -24,6 +24,13 @@
 </div>
 
 <div class="field">
+    <%= f.label :public, class: "checkbox" do %>
+        <%= f.check_box :public %>
+        Public
+    <% end %>
+</div>
+
+<div class="field">
     <%= f.label :student_emails, 'Students', class: "label" %>
     <div class="control">
         <%= f.text_area :student_emails, class: "input" %>

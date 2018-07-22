@@ -70,6 +70,20 @@ class CoursesController < ApplicationController
         end
     end
 
+    # Authentication √
+    def enroll
+        course = current_user.discover_courses.find(params[:course_id])
+        enrollment = current_user.enrollments.build(course: course)
+
+        if enrollment.save
+            flash[:success] = 'Successfully enrolled in course!'
+        else
+            flash[:alert] = 'Failed to enroll in course :('
+        end
+
+        redirect_to course_modus_path(course)
+    end
+
     protected
     def show_create?
         if action_name == "index"
@@ -92,6 +106,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.require(:course).permit(:title, :description, :student_emails)
+        params.require(:course).permit(:title, :description, :public, :student_emails)
     end
 end
