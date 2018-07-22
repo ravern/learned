@@ -149,7 +149,10 @@ class ModusController < ApplicationController
     end
 
     def show_modules?
-        Enrollment.find_by(course: @course, user: current_user)
+        if current_user.admin?
+            return true
+        end
+        current_user.courses.find_by(id: @course.id) || Enrollment.find_by(course: @course, user: current_user)
     end
 
     def modu_params
