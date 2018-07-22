@@ -1,7 +1,8 @@
 module ApplicationHelper
     def markdown(text)
         options = {
-          filter_html:     true,
+          escape_html:     true,
+          safe_links_only: true,
           hard_wrap:       true,
           link_attributes: { rel: 'nofollow', target: "_blank" },
           space_after_headers: true,

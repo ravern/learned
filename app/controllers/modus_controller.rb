@@ -107,7 +107,7 @@ class ModusController < ApplicationController
     protected
     def show_create?
         if action_name == "index"
-            return can? :create, @modu
+            return can? :create, Modu
         end
         return false
     end

@@ -14,7 +14,8 @@ class Ability
         user.courses.include?(course)
       end
 
-      can [:create, :update, :delete], Modu do |modu|
+      can :create, Modu
+      can [:update, :delete], Modu do |modu|
         user.courses.include?(modu.course)
       end
     end
