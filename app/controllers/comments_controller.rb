@@ -23,9 +23,25 @@ class CommentsController < ApplicationController
         end
     end
 
+    # Authentication √
+    def destroy
+        @comment = Comment.find(params[:id])
+
+        authorize! :delete, @comment
+
+        @completin = Completion.new
+
+        @comment.destroy
+        redirect_to course_modu_path(@course, @modu)
+    end
+
     private
     def set_course!
-        @course = current_user.all_courses.find(params[:course_id])
+        if current_user.admin?
+            @course = Course.find(params[:course_id])
+        else
+            @course = current_user.all_courses.find(params[:course_id])
+        end
     end
 
     def set_modu!

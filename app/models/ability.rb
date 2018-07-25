@@ -6,6 +6,7 @@ class Ability
     if user.admin?
       can :delete, Course
       can :delete, Modu
+      can :delete, Comment
     end
 
     if user.teacher?

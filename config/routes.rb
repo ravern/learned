@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :modus do
       post "complete", to: 'modus#complete'
 
-      resource :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
   end
 end
